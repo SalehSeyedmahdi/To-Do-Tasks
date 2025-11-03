@@ -1,3 +1,6 @@
 import './style.css'
+import { Header } from "../src/components/header/header";
 
-document.querySelector('#app').innerHTML = ``;
+const app = document.getElementById("app");
+
+app.append(Header());
