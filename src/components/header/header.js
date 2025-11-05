@@ -58,6 +58,7 @@ export function Header() {
                         className: "w-6 h-6 cursor-pointer",
                         restAttrs: {
                             src: "../../../public/SVG/plus.svg",
+                            id: "plus",
                         },
                     }),
                 ],
