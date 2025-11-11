@@ -1,7 +1,7 @@
-import './style.css'
-import { Header } from "../src/components/header/header";
-import { TableTitle } from "../src/components/table-title/table-title";
-import { ModalOverlay } from "../src/components/overlay/overlay";
+import { Header } from "../src/components/header/header.js";
+import { ModalOverlay } from "../src/components/overlay/overlay.js";
+import { TableTitle } from "../src/components/table-title/table-title.js";
+import "./style.css";
 
 const app = document.getElementById("app");
 
