@@ -1,9 +1,11 @@
 import { El } from "../../utils/el.js";
+import { DetailsModal } from "../details-modal/details-modal.js";
 import { clearRow } from "../remove-list/remove-list.js";
 
 export function AddList() {
 	const overlay = document.getElementById("modal-overlay");
 	const prevOverflow = document.body.style.overflow;
+
 	const taskName = document.getElementById("task-name");
 	localStorage.setItem("taskName", taskName.value);
 
@@ -12,6 +14,9 @@ export function AddList() {
 
 	const status = document.getElementById("status");
 	localStorage.setItem("status", status.value);
+
+	const date = document.getElementById("date");
+	localStorage.setItem("date", date.value);
 
 	const description = document.getElementById("description");
 	localStorage.setItem("description", description.value);
@@ -40,7 +45,7 @@ export function AddList() {
 			}),
 			El({
 				element: "td",
-				innerText: localStorage.getItem("deadline"),
+				innerText: localStorage.getItem("date"),
 				className: "text-md text-center border border-[#dddddd] p-5",
 			}),
 			El({
@@ -89,6 +94,7 @@ export function AddList() {
 										className: "w-5 h-5",
 										restAttrs: {
 											src: "../../../public/SVG/eye.svg",
+											id: "eye-icon",
 										},
 									}),
 								],
@@ -100,7 +106,19 @@ export function AddList() {
 		],
 	});
 
+	newRow.dataset.taskName = taskName.value;
+	console.log(newRow.dataset.taskName);
+	newRow.dataset.priority = priority.value;
+	newRow.dataset.status = status.value;
+	newRow.dataset.date = date.value;
+	newRow.dataset.description = description.value;
+
 	table.append(newRow);
+
+	const eyeIcon = newRow.querySelector("#eye-icon");
+	eyeIcon.addEventListener("click", (e) => {
+		DetailsModal(e);
+	});
 
 	const deleteBtn = newRow.querySelector(".delete-row");
 	deleteBtn.addEventListener("click", () => {
