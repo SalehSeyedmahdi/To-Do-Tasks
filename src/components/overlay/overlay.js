@@ -18,7 +18,7 @@ export function ModalOverlay() {
 			El({
 				element: "div",
 				className:
-					"w-130 h-125 flex flex-col items-center gap-6 relative bg-[#f2e8fe] rounded-md shadow-2xl p-3",
+					"w-130 h-125 flex flex-col items-center gap-10 relative bg-[#f2e8fe] rounded-md shadow-2xl p-3",
 				children: [
 					El({
 						element: "div",
@@ -49,7 +49,7 @@ export function ModalOverlay() {
 								children: [
 									El({
 										element: "option",
-										innerText: "Select",
+										innerText: "Priority",
 									}),
 									El({
 										element: "option",
@@ -66,12 +66,6 @@ export function ModalOverlay() {
 								],
 							}),
 							El({
-								element: "p",
-								innerText: "Priority",
-								className:
-									"absolute top-33 left-7 font-semibold text-xs text-[#6200ea]",
-							}),
-							El({
 								element: "select",
 								className:
 									"w-1/3 text-[#6200ea] bg-[#ffffff] outline-hidden rounded-xl p-3",
@@ -81,7 +75,7 @@ export function ModalOverlay() {
 								children: [
 									El({
 										element: "option",
-										innerText: "Select",
+										innerText: "Status",
 									}),
 									El({
 										element: "option",
@@ -98,27 +92,12 @@ export function ModalOverlay() {
 								],
 							}),
 							El({
-								element: "p",
-								innerText: "Status",
-								className:
-									"absolute top-33 left-49 font-semibold text-xs text-[#6200ea]",
-							}),
-							El({
 								element: "input",
 								className:
 									"w-1/3 text-[#6200ea] bg-[#ffffff] outline-hidden rounded-xl p-3",
 								restAttrs: {
 									type: "date",
 									id: "date",
-								},
-							}),
-							El({
-								element: "p",
-								innerText: "Date",
-								className:
-									"absolute top-33 left-91 font-semibold text-xs text-[#6200ea]",
-								restAttrs: {
-									id: "deadline",
 								},
 							}),
 						],
@@ -129,13 +108,8 @@ export function ModalOverlay() {
 							"w-full h-20 text-[#6200ea] bg-[#ffffff] outline-hidden rounded-xl p-3",
 						restAttrs: {
 							id: "description",
+							placeholder: "Description",
 						},
-					}),
-					El({
-						element: "p",
-						innerText: "Description",
-						className:
-							"absolute top-51 left-7 font-semibold text-xs text-[#6200ea]",
 					}),
 					El({
 						element: "button",
