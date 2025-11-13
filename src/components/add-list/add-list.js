@@ -1,6 +1,7 @@
 import { El } from "../../utils/el.js";
 import { clearErrors } from "../clear-error/clear-error.js";
 import { DetailsModal } from "../details-modal/details-modal.js";
+import { EditModalOverlay } from "../edit-list/edit-list.js";
 import { clearRow } from "../remove-list/remove-list.js";
 
 export function AddList() {
@@ -98,21 +99,33 @@ export function AddList() {
 					element: "td",
 					innerText: localStorage.getItem("taskName"),
 					className: "text-md text-left border border-[#dddddd] p-5",
+					restAttrs: {
+						id: "task-name-cell",
+					},
 				}),
 				El({
 					element: "td",
 					innerText: localStorage.getItem("priority"),
 					className: "text-md text-center border border-[#dddddd] p-5",
+					restAttrs: {
+						id: "priority-cell",
+					},
 				}),
 				El({
 					element: "td",
 					innerText: localStorage.getItem("status"),
 					className: "text-md text-center border border-[#dddddd] p-5",
+					restAttrs: {
+						id: "status-cell",
+					},
 				}),
 				El({
 					element: "td",
 					innerText: localStorage.getItem("date"),
 					className: "text-md text-center border border-[#dddddd] p-5",
+					restAttrs: {
+						id: "date-cell",
+					},
 				}),
 				El({
 					element: "td",
@@ -146,6 +159,7 @@ export function AddList() {
 											className: "w-5 h-5",
 											restAttrs: {
 												src: "../../../public/SVG/edit.svg",
+												id: "edit-icon",
 											},
 										}),
 									],
@@ -172,7 +186,6 @@ export function AddList() {
 			],
 		});
 		newRow.dataset.taskName = taskName.value;
-		console.log(newRow.dataset.taskName);
 		newRow.dataset.priority = priority.value;
 		newRow.dataset.status = status.value;
 		newRow.dataset.date = date.value;
@@ -184,10 +197,15 @@ export function AddList() {
 		eyeIcon.addEventListener("click", (e) => {
 			DetailsModal(e);
 		});
-	}
 
-	const deleteBtn = newRow.querySelector(".delete-row");
-	deleteBtn.addEventListener("click", () => {
-		clearRow(newRow);
-	});
+		const deleteBtn = newRow.querySelector(".delete-row");
+		deleteBtn.addEventListener("click", () => {
+			clearRow(newRow);
+		});
+
+		const editIcon = newRow.querySelector("#edit-icon");
+		editIcon.addEventListener("click", (e) => {
+			EditModalOverlay(e);
+		});
+	}
 }
